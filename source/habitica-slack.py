@@ -41,7 +41,7 @@ class HabiticaSlackConnector():
 		
 	def get_messages_from_last_hour(self, jsondata, lastposttime):
 		parsed_json = json.loads(jsondata)
-		for msg in parsed_json:
+		for msg in reversed(parsed_json):
 			self.update_last_post_if_greater(int(msg['timestamp']))
 			if int(msg['timestamp']) > lastposttime:
 				print (msg['text'].encode('utf8'))
